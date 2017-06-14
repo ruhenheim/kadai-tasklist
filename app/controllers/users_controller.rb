@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show]
-  before_action :set_user, only: [:show]
 
   def index
     @users = User.all.page(params[:page])
   end
   def show
+    @user = current_user
+    @tasks = current_user.tasks.order(created_at: :desc).page(params[:page])
+    counts(@user)
   end
   def new
     @user = User.new
@@ -22,9 +24,6 @@ class UsersController < ApplicationController
   end
 
   private
-  def set_user
-    @user = User.find(params[:id])
-  end
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end

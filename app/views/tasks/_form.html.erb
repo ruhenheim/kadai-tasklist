@@ -3,7 +3,7 @@
 
   <div class="form-group">
     <%= f.label :status %>
-    <%= f.select :status, %w(未仕掛 仕掛中 完了), {}, class: 'form-control' %>
+    <%= f.select :status, status_select_list, {}, class: 'form-control' %>
   </div>
 
   <div class="form-group">
