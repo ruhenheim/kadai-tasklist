@@ -8,7 +8,7 @@
       <div class="media-body">
         <div>
           <%= link_to user.name, user_path(user) %>
-          <span class="text-muted">posted at <%= task.created_at %></span>
+          <span class="text-muted">posted at <%= task.created_at.getlocal("+09:00") %></span>
         </div>
         <div>
           <p><%= task.content %></p>
