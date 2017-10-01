@@ -20,7 +20,7 @@ class TasksController < ApplicationController
     else
       @tasks = current_user.tasks.order(created_at: :desc).page(params[:page])
       flash.now[:danger] = "Task が投稿されませんでした."
-      render 'topages/index'
+      render :new
     end
   end
   def update
